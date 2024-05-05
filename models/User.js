@@ -1,4 +1,7 @@
 const { Schema, model } = require('mongoose');
+const friendSchema = require('./Friends');
+const reactionSchema = require('./Reaction');
+const thoughtSchema = require('./Thought');
 
 // TODO
 // Schema to create User Model
@@ -12,9 +15,9 @@ const userSchema = new Schema(
         email: {
             type: String,
             required: true,
-            max_length: 50,
+            maxl_ength: 50,
         },
-        reactions: [reactionScheam],
+        reactions: [reactionSchema],
         thoughts: [thoughtSchema],
         friends: [friendSchema],
     },
