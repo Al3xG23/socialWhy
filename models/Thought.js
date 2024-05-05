@@ -7,15 +7,16 @@ const userSchema = require('./User');
 // Schema to create Thought Model
 const thoughtSchema = new Schema(
     {
-        thoughtTitle: {
+        thoughtText: {
             type: String,
             required: true,
         },
-        thoughtBody: {
+        userName: {
             type: String,
             required: true,
+            max_length: 50,
         },
-        user: [
+        userId: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'user',

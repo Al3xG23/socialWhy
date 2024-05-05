@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const friendSchema = require('./Friends');
+const friendsSchema = require('./Friends');
 const reactionSchema = require('./Reaction');
 const thoughtSchema = require('./Thought');
 
@@ -19,7 +19,7 @@ const userSchema = new Schema(
         },
         reactions: [reactionSchema],
         thoughts: [thoughtSchema],
-        friends: [friendSchema],
+        friends: [friendsSchema],
     },
     {
         toJSON: {
