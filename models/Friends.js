@@ -1,5 +1,5 @@
 const { Schema, Types } = require('mongoose');
 
-TODO
+// TODO
 
 module.exports = friendsSchema;
