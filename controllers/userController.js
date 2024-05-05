@@ -55,7 +55,7 @@ module.exports = {
         try {
             const user = await User.findOneAndRemove({ _id: req.params.userId });
             if (!user) {
-                return res.status(404).json({ message: "User doesn't exist!" });
+                return res.status(404).json({ message: 'User does not exist!' });
             }
             // TODO Not sure if this is right
             const thought = await Thought.findAndRemove(
@@ -84,6 +84,38 @@ module.exports = {
             );
             if (!user) {
                 res.status(404).json({ message: 'No user with this id! ' });
+            }
+            res.json(user);
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
+    // Add a Users thought
+    async createThought(req, res) {
+        try {
+            const user = await User.findOneAndUpdate(
+                { _id: req.params.userId },
+                { $pull: { thought: { thoughtId: req.params.thoughtId } } },
+                { runValidators: true, new: true }
+            );
+            if(!user) {
+                return res.status(404).json({ message: ' No user exists with that Id!' });
+            }
+            res.json(user);
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
+    // Remove a Users Thought
+    async deleteThought(req, res) {
+        try {
+            const user = await User.findOneAndUpdate(
+                { _id: req.params.userId },
+                { $pull: { thought: { thoughtId: req.params.thoughtId } } },
+                { runValidators: true, new: true }
+            );
+            if(!user) {
+                return res.status(404).json({ message: ' No user exists with that Id!' });
             }
             res.json(user);
         } catch (err) {
