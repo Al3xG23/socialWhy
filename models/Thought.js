@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
 
-TODO
+// TODO
 
 module.exports = Thought;
