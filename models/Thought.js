@@ -3,7 +3,6 @@ const friendSchema = require('./Friends');
 const reactionSchema = require('./Reaction');
 const userSchema = require('./User');
 
-// TODO
 // Schema to create Thought Model
 const thoughtSchema = new Schema(
     {
@@ -11,11 +10,12 @@ const thoughtSchema = new Schema(
             type: String,
             required: true,
         },
-        userName: {
-            type: String,
-            required: true,
-            max_length: 50,
-        },
+        userName: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'user',
+            },
+        ],
         userId: [
             {
                 type: Schema.Types.ObjectId,

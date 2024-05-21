@@ -3,7 +3,6 @@ const userSchema = require('./User');
 const reactionSchema = require('./Reaction');
 const thoughtSchema = require('./Thought');
 
-// TODO
 // Schema for Friends
 const friendsSchema = new Schema(
     {
