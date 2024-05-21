@@ -7,9 +7,24 @@ const allUsers = async () => {
     return numberOfUser;
 }
 
-module.exports = {
-    // TODO
+const thoughts = async (userId) =>
+    User.aggregate([
+        {
+            $match: { _id: new ObjectId(userId) }
+        },
+        {
+            $unwind: '$thoughts',
+        },
+        {
+            $group: {
+                _id: new ObjectId(userId),
 
+            }
+        },
+    ]);
+
+
+module.exports = {
     // Get all users
     async getAllUsers(req, res) {
         try {
@@ -35,6 +50,7 @@ module.exports = {
             res.json({
                 user,
                 // TODO get thoughts for the user
+                thoughts: await thoughts(req.params.userId),
             });
         } catch (err) {
             console.log(err);
@@ -95,10 +111,10 @@ module.exports = {
         try {
             const user = await User.findOneAndUpdate(
                 { _id: req.params.userId },
-                { $pull: { thought: { thoughtId: req.params.thoughtId } } },
+                { $addToSet: { thought: req.body } },
                 { runValidators: true, new: true }
             );
-            if(!user) {
+            if (!user) {
                 return res.status(404).json({ message: ' No user exists with that Id!' });
             }
             res.json(user);
@@ -114,7 +130,7 @@ module.exports = {
                 { $pull: { thought: { thoughtId: req.params.thoughtId } } },
                 { runValidators: true, new: true }
             );
-            if(!user) {
+            if (!user) {
                 return res.status(404).json({ message: ' No user exists with that Id!' });
             }
             res.json(user);

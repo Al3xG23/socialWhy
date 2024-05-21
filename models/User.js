@@ -3,7 +3,6 @@ const friendsSchema = require('./Friends');
 const reactionSchema = require('./Reaction');
 const thoughtSchema = require('./Thought');
 
-// TODO
 // Schema to create User Model
 const userSchema = new Schema(
     {
@@ -11,11 +10,12 @@ const userSchema = new Schema(
             type: String,
             required: true,
             max_length: 50,
+            min_length: 4,
         },
         email: {
             type: String,
             required: true,
-            maxl_ength: 50,
+            max_length: 50,
         },
         reactions: [reactionSchema],
         thoughts: [thoughtSchema],
@@ -29,7 +29,5 @@ const userSchema = new Schema(
 );
 
 const User = model('user', userSchema);
-
-module.exports = User;
 
 module.exports = User;

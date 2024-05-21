@@ -3,7 +3,6 @@ const friendSchema = require('./Friends');
 const userSchema = require('./User');
 const thoughtSchema = require('./Thought');
 
-// TODO
 // Schema for Reaction
 const reactionSchema = new Schema(
     {
@@ -29,6 +28,8 @@ const reactionSchema = new Schema(
             type: Date,
             default: Date.now,
         },
+        user: [userSchema],
+        thought: [thoughtSchema],
     },
     {
         toJSON: {

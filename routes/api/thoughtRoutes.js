@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// TODO
+
 const {
     getThoughts,
     getSingleThought,

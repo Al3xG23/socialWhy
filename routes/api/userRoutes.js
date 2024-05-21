@@ -8,6 +8,8 @@ const {
     updateUser,
     createThought,
     deleteThought,
+    createReaction,
+    deleteReaction,
 } = require('../../controllers/userController.js');
 
 router
@@ -28,5 +30,13 @@ router
 router
 .route('/:userId/thought/:thoughtId')
 .delete(deleteThought);
+
+router
+.route('/:userId/reaction')
+.post(createReaction);
+
+router
+.route('/:userId/reaction/:reactionId')
+.delete(deleteReaction);
 
 module.exports = router;
