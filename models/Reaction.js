@@ -1,61 +1,4 @@
-// const { Schema, Types } = require('mongoose');
-// const friendSchema = require('./Friends');
-// const userSchema = require('./User');
-// const thoughtSchema = require('./Thought');
-
-// // Schema for Reaction
-// const reactionSchema = new Schema(
-//     {
-//         // reactionId: {
-//         //     type: Schema.Types.ObjectId,
-//         //     default: () => new Types.ObjectId(),
-//         // },
-//         reactionTitle: {
-//             type: String,
-//             required: true,
-//             maxlength: 50,
-//             minlength: 3,
-//             default: 'Unnamed reaction',
-//         },
-//         reactionBody: {
-//             type: String,
-//             required: true,
-//             maxlength: 250,
-//             minlength: 3,
-//             default: 'Empty reaction',
-//         },
-//         createdAt: {
-//             type: Date,
-//             default: Date.now,
-//         },
-//         // user: [userSchema],
-//         user: [
-//             {
-//                 type: Schema.Types.ObjectId,
-//                 ref: 'user',
-//             },
-//         ],
-//         // userId: [
-//         //     {
-//         //         type: Schema.Types.ObjectId,
-//         //         ref: 'user',
-//         //     },
-//         // ],
-//         thought: [thoughtSchema],
-//     },
-//     {
-//         toJSON: {
-//             getters: true,
-//         },
-//         id: false,
-//     }
-// );
-
-// module.exports = reactionSchema;
-
 const { Schema, Types } = require('mongoose');
-const userSchema = require('./User');
-const thoughtSchema = require('./Thought');
 
 // Schema for Reaction
 const reactionSchema = new Schema(
@@ -68,7 +11,6 @@ const reactionSchema = new Schema(
             type: String,
             required: true,
             maxlength: 280,
-            minlength: 3,
             default: 'Empty reaction',
         },
         username: {
