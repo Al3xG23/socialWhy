@@ -3,9 +3,10 @@ const { User, Thought } = require('../models');
 module.exports = {
     // Get all users
     async getAllUsers(req, res) {
+        console.log('user route');
         try {
-            const users = await User.find();
-            res.json(userObj);
+            const users = await User.find();            
+            res.json(users);
         } catch (err) {
             console.log(err);
             return res.status(500).json(err);
