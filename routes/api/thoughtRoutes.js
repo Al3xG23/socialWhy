@@ -12,7 +12,7 @@ const {
 
 router
 .route('/')
-.get(getAllThoughts) 
+.get(getAllThoughts)
 .post(createThought);
 
 router
