@@ -55,7 +55,7 @@ module.exports = {
             )
 
             if (!thought) {
-                res.status(404).json({ message: 'No thought with that ID!' });
+                res.status(404).json({ message: 'No thought with that ID' });
             }
         } catch (err) {
             res.status(500).json(err);
@@ -70,7 +70,7 @@ module.exports = {
                 { runValidators: true, new: true }
             );
             if (!thought) {
-                res.status(404).json({ message: 'No thought with this id!' });
+                res.status(404).json({ message: 'No thought with this ID' });
             }
             res.json(thought);
         } catch (err) {
@@ -86,9 +86,7 @@ module.exports = {
                 { runValidators: true, new: true }
             )
             if (!thought) {
-                return res
-                  .status(404)
-                  .json({ message: 'No thought found with that ID :(' });
+                return res.status(404).json({ message: 'No thought found with that ID' });
               }
         
               res.json(thought);
@@ -106,9 +104,7 @@ module.exports = {
             );
       
             if (!thought) {
-              return res
-                .status(404)
-                .json({ message: 'No thought found with that ID :(' });
+              return res.status(404).json({ message: 'No thought found with that ID' });
             }
       
             res.json(thought);
