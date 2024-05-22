@@ -43,7 +43,7 @@ module.exports = {
             if (!user) {
                 return res.status(404).json({ message: 'User does not exist!' });
             }
-            const thought = await Thought.findAndDelete(
+            const thought = await Thought.findOneAndDelete(
                 { thought: req.params.userId },
                 { $pull: { thought: req.params.userId } },
                 { new: true }
