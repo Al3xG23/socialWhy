@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// TODO
+
 const {
     getAllUsers,
     getSingleUser,
