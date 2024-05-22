@@ -1,7 +1,8 @@
 const connection = require('../config/connection');
 const { User, Thought } = require('../models');
-const { seedUser, seedThoughts } = require('./data');
-
+// const { seedUser, seedThoughts } = require('./data');
+const { users, thoughts } =  require('./data');
+ 
 connection.on('error', (err) => err);
 
 // TODO
@@ -17,27 +18,28 @@ connection.once('open', async () => {
         await connection.dropCollection('users');
     }
 
-    const users = [];
+    // const users = [];
 
-    for (let i = 0; i < 20; i++) {
-        const thoughts = seedThoughts();
-        users.push({
-            userName,
-            email,
-            reactions,
-            thoughts,
-            friends
-        });
-    }
+    // for (let i = 0; i < 20; i++) {
+    //     const thoughts = seedThoughts();
+    //     users.push({
+    //         username,
+    //         email,
+    //         reactions,
+    //         thoughts,
+    //         friends
+    //     });
+    // }
     
-    // const userData = await User.create(users);
-    // await thoughts.create({
+    const userData = await User.create(users);
+    const thoughtData = await Thought.create(thoughts);
+    // await Thought.create({
     //     thoughtText: '',
     //     users: [...userData.map(({_id}) => _id)],
     // });
 
-    await User.insertMany(users);
-    console.table(users);
+    // await User.insertMany(users);
+    // console.table(users);
     console.info('Seeding complete! 🌱');
     process.exit(0);
 });
